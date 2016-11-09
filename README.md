@@ -4,9 +4,10 @@ PDO Database Class
 A database class for PHP-MySQL which uses the PDO extension.
 
 ### To-do
-#### 1. PSR-0 / PSR-1 coding standards
-#### 2. Use namespaces
-#### 3. Dependency Injection / Testability
+#### 1. PSR-0 / PSR-1 coding standards (in progress)
+#### 2. Configure and test logger class that extends DB class (in progress)
+#### 3. Use namespaces (in progress)
+#### 4. Dependency Injection / Testability
 
 If you have any questions go to : http://indieteq.com/index/readmore/how-to-prevent-sql-injection-in-php
 
@@ -20,16 +21,18 @@ user = root
 password = 
 dbname = yourdatabase
 ```
-#### 2. Require the class in your project
+#### 2. Load the class in your project
 ```php
 <?php
-require("Db.php");
+use JRW\MySQL\DB; 
+
+require 'vendor/autoload.php';
 ```
 #### 3. Create the instance 
 ```php
 <?php
 // The instance
-$db = new Db();
+$db = new DB();
 ```
 #### 4.  Logs - Modify the read/write rights of the root folder
 
@@ -182,9 +185,12 @@ Actually it's just a little ORM class.
 #### Example class :
 ```php
 <?php
-require_once("EasyCrud.php");
- 
-class YourClass  Extends Crud {
+
+use JRw\MySQL\Crud; 
+
+require 'venodr/autoload.php';
+
+class YourClass Extends Crud {
  
   # The table you want to perform the database actions on
   protected $table = 'persons';

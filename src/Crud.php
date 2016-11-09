@@ -18,8 +18,9 @@ class Crud
     /**
      * Crud constructor.
      * @param array $data
+     * @throws \Exception
      */
-    public function __construct(array $data = array())
+    public function __construct($data = array())
     {
         $this->db = new DB();
         $this->variables = $data;
@@ -52,7 +53,6 @@ class Crud
 
         return null;
     }
-
 
     /**
      * @param string $id
@@ -228,8 +228,12 @@ class Crud
             return $this->db->single("SELECT count(" . $field . ")" . " FROM " . $this->table);
     }
 
-
-    private function exec($sql, $array = null)
+    /**
+     * @param $sql
+     * @param null $array
+     * @return mixed
+     */
+    private function exec($sql, array $array = null)
     {
 
         if ($array !== null) {
